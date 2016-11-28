@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>girl</title>
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<style>
+.container{
+	position: absolute;
+	width: 512px;
+	height:384px;
+	left: 50%;
+	top: 50%;
+	transform:translate(-50%,-50%);
+
+}
+.img{
+	width: 100%;
+	height:100%;
+	background-image:url("img/girl1.jpg");
+}
+.icon{
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+	height:18px;
+}
+.icon span{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	border:1px solid #d67ed6;
+}
+.active{
+	background-color: #d67ed6;
+}
+.icon span:hover{
+	background-color: #d67ed6;
+	cursor: pointer;
+}
+.arrow{
+	position: absolute;
+			width: 30px;
+			height: 50px;
+			background-color: rgba(150,150,150,0.5);
+			border-radius: 5px;
+			text-align: center;
+			line-height: 50px;
+			font-size: 22px;
+			font-weight: bold;
+			color: #fff;
+			z-index: 2;
+			cursor:pointer;
+}
+.arrow:hover{
+	background-color: rgba(150,150,150,0.7);
+}
+.pre{
+	left: 1%;
+	top: 50%;
+	transform:translateY(-50%);
+}
+.next{
+	right: 1%;
+	top: 50%;
+	transform:translateY(-50%);
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="img"></div>
+		<div class="icon">
+			<span class="active"></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="arrow pre">&lt;</div> 
+		<div class="arrow next">&gt;</div>
+	</div>
+	<script>
+	window.onload = function(){
+		var n=0;
+		var img=["img/girl1.jpg","img/girl2.jpg","img/girl3.jpg","img/girl4.jpg","img/girl5.jpg"];
+		var $container=$(".container"),
+		    $img=$container.find('.img'),
+		    $span=$container.find('.icon>span');
+		function slide(){
+			n=n>=$span.length-1?0:++n;
+			console.log(n);
+			$span.eq(n)
+			     .siblings()
+			     .removeClass('active')
+			     .end().addClass('active');
+			picFade();
+		}
+		function picFade(){
+			var curimg=img[n];
+			$img.fadeTo('slow',0.4,function(){
+				$img.css('background-image','url("'+curimg+'")')
+				    .fadeTo('slow',1.0);
+			})
+		}
+		var timer = setInterval(slide, 5000);
+
+		$span.on('click',function(event){
+			clearInterval(timer);
+			n = $(this).index()-1;
+			console.log(n);
+			slide();
+			timer=setInterval(slide,5000);
+		})
+
+		$container.find('.arrow').on('click',function(){
+			if(!$img.is(':animated')){
+				clearInterval(timer);
+			n=$(this).hasClass('pre')?n-2:n;
+			if (n<0) {n=n+5}
+			slide();
+			timer=setInterval(slide,5000);
+			}
+		})
+	}
+	</script>
+</body>
+</html>
