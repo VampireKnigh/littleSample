@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex-gridLayout</title>
+	<style>
+	html,body{
+		width: 100%;
+		height: 100%;
+		margin:0;
+		padding:0;
+	}
+		.grid{
+			display: flex;
+		}
+		.grid-cell{
+			flex:1;
+			background-color: #F5F2F0;
+			height: 40px;
+			text-align: center;
+			vertical-align: center;
+			line-height: 40px;
+			border-radius: 10px;
+			margin:10px 0;
+		}
+		.u-full{
+			flex: 0 0 100%;
+		}
+		.u-1of2{
+			flex: 0 0 50%;
+		}
+		.u-1of3{
+			flex:0 0 33.33%;
+		}
+		.u-1of4{
+			flex:0 0 25%;
+		}
+		.u-1of5{
+			flex:0 0 20%;
+		}
+		.u-1of6{
+			flex:0 0 16.67%;
+		}
+		.u-1of7{
+			flex: 0 0 14.28%;
+		}
+		.u-1of8{
+			flex:0 0 12.5%;
+		}
+		.u-1of9{
+			flex:0 0 11.11%;
+		}
+		.u-1of10{
+			flex:0 0 10%;
+		}
+		.u-1of11{
+			flex:0 0 9.09%;
+		}
+		.u-1of12{
+			flex:0 0 8.33%;
+		}
+	</style>
+</head>
+<body>
+	<div class="grid">
+		<div class="grid-cell u-full">100%</div>
+	</div>
+	<div class="grid">
+		<div class="grid-cell u-1of2">50%</div>
+		<div class="grid-cell u-1of2">50%</div>
+	</div>
+	<div class="grid">
+		<div class="grid-cell u-1of3">33%</div>
+		<div class="grid-cell u-1of3">33%</div>
+		<div class="grid-cell u-1of3">33%</div>
+	</div>
+	<div class="grid">
+		<div class="grid-cell u-1of4">25%</div>
+		<div class="grid-cell u-1of4">25%</div>
+		<div class="grid-cell u-1of4">25%</div>
+		<div class="grid-cell u-1of4">25%</div>
+	</div>
+	<div class="grid">
+		<div class="grid-cell u-1of4">25%</div>
+		<div class="grid-cell">auto</div>
+		<div class="grid-cell u-1of3">33.33%</div>
+	</div>
+</body>
+</html>
